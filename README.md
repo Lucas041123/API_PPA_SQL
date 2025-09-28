@@ -10,7 +10,7 @@ O projeto atende a valores da Sociedade 5.0, promovendo inclusão digital e bem-
 * **Linguagem:** Java 17
 * **Framework:** Spring Boot 3.x
 * **Build Tool:** Maven
-* **Banco de Dados:** H2 Database (em memória, para desenvolvimento)
+* **Banco de Dados:** Oracle Database
 * **ORM:** Spring Data JPA / Hibernate
 * **Segurança:** Spring Security (com BCrypt para criptografia de senhas)
 * **Utilidades:** Lombok (para reduzir o boilerplate code)
