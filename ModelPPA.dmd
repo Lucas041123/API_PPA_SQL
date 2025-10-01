@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="ModelPPA" id="2D95A3DB-8D81-43A9-E6D7-C7985683BEE1" version="3.5">
+<createdBy>Lucas</createdBy>
+<createdTime>2025-10-01 23:11:07 UTC</createdTime>
+<ownerDesignName>ModelPPA</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>2D95A3DB-8D81-43A9-E6D7-C7985683BEE1</designId>
+</OSDM_Design>
