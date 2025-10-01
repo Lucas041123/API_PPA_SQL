@@ -37,7 +37,7 @@ Antes de executar a aplicação, é necessário criar a estrutura de tabelas e a
 
 1.  **Clonar o repositório:**
     ```bash
-    git clone [https://github.com/Lucas041123/API_PPA_SQL.git](https://github.com/Lucas041123/API_PPA_SQL.git)
+    git clone https://github.com/Lucas041123/API_PPA_SQL.git
     cd API_PPA_SQL
     ```
 2.  **Configurar a Conexão:**
