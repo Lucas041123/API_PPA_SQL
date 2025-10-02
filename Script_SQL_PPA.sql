@@ -92,8 +92,7 @@ CREATE TABLE posts (
 );
 
 -- Inserir Usuários
--- Nota: As senhas aqui são exemplos. Para criar novos usuários pela API,
--- use o endpoint POST /usuarios para que o BCrypt gere um hash seguro.
+-- Nota: As senhas aqui são exemplos.
 INSERT INTO usuarios (nome, email, senha, empresa, bio, ativo)
 VALUES ('TechNomadX', 'joao.silva@fiap.com.br', '$2a$10$3gU.x.q.s.C1g5.Yc.Z.p.Q.t.u.E.1.j.A.c.Q.f.Z.o.O.e', 'FIAP', 'Desenvolvedor focado em mobile e análise de dados.', 1);
 
@@ -249,4 +248,5 @@ EXCEPTION
         RAISE;
 END;
 /
+
 
