@@ -66,7 +66,7 @@ jobs:
         
       # 2. INTEGRAÇÃO ORACLE: Executa o script SQL (SQL_PPA_2.sql)
       - name: Executar Migração do Banco Oracle
-        uses: lou-parslow/oracle-sqlplus-action@v2 # <--- CORREÇÃO DEFINITIVA
+        uses: oracle/run-sqlcl@v1
         with:
           username: ${{ secrets.ORACLE_USER }}
           password: ${{ secrets.ORACLE_PASSWORD }}
