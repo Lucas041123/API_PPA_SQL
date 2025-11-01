@@ -80,7 +80,7 @@ jobs:
       - name: Checkout do código
         uses: actions/checkout@v4
 
-      # 3. INTEGRAÇÃO ORACLE: Executa o script SQL (Script_SQL_PPA_v2.sql)
+      # 3. INTEGRAÇÃO ORACLE: Executa o script SQL (SQL_PPA_2.sql)
       # Esta action usa o SQL*Plus (cliente Oracle) para se conectar e rodar o script
       - name: Executar Migração do Banco Oracle
         uses: oracle-actions/run-sqlplus-action@v1
@@ -88,8 +88,8 @@ jobs:
           # Usamos "GitHub Secrets" para as credenciais. NUNCA as coloque direto no YAML!
           username: ${{ secrets.ORACLE_USER }}
           password: ${{ secrets.ORACLE_PASSWORD }}
-          connect_string: ${{ secrets.ORACLE_CONNECT_STRING }} # Ex: oracle.fiap.com.br:1521/ORCL
-          sql_script: Script_SQL_PPA_v2.sql # O script que criamos
+          connect_string: ${{ secrets.ORACLE_CONNECT_STRING }} # oracle.fiap.com.br:1521/ORCL
+          sql_script: SQL_PPA_2.sql
 
       # 4. DEPLOY DA APLICAÇÃO: Copia o .jar para seu servidor
       # Este é um exemplo usando 'scp' (Secure Copy via SSH).
