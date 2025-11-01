@@ -83,7 +83,7 @@ jobs:
       # 3. INTEGRAÇÃO ORACLE: Executa o script SQL (SQL_PPA_2.sql)
       # Esta action usa o SQL*Plus (cliente Oracle) para se conectar e rodar o script
       - name: Executar Migração do Banco Oracle
-        uses: oracle-actions/run-sqlplus-action@v1
+        uses: oracle/run-sqlcl@v1
         with:
           # Usamos "GitHub Secrets" para as credenciais. NUNCA as coloque direto no YAML!
           username: ${{ secrets.ORACLE_USER }}
