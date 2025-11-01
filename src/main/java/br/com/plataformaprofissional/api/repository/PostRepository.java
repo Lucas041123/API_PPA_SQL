@@ -15,7 +15,7 @@ public interface PostRepository extends JpaRepository<Post, Long> {
      * O nome do parâmetro de saída da procedure não é necessário aqui, pois a procedure o retorna implicitamente.
      * No entanto, o Spring espera um valor de retorno, que neste caso será o ID do novo post.
      */
-    @Procedure(procedureName = "PKG_FORUM.registrar_novo_post")
+    @Procedure(procedureName = "registrar_novo_post")
     Integer registrarNovoPost(
             @Param("p_titulo") String titulo,
             @Param("p_conteudo") String conteudo,
