@@ -74,7 +74,7 @@ jobs:
       # 3. Baixar e instalar o Oracle SQLcl (cliente de banco)
       - name: Download e Instalação do SQLcl
         run: |
-          wget https://download.oracle.com/otn_software/java/sqlcl/sqlcl-latest.zip
+          wget https://download.oracle.com/otn_software/java/sqldeveloper/sqlcl-latest.zip
           unzip sqlcl-latest.zip
           # Adiciona o executável 'sql' ao PATH do runner
           echo "$(pwd)/sqlcl/bin" >> $GITHUB_PATH
