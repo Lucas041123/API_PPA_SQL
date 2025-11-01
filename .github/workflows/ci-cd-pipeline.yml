@@ -64,14 +64,14 @@ jobs:
       - name: Checkout do código
         uses: actions/checkout@v4
         
-      # 2. INTEGRAÇÃO ORACLE: Executa o script SQL (Script_SQL_PPA_v2.sql)
+      # 2. INTEGRAÇÃO ORACLE: Executa o script SQL (SQL_PPA_2.sql)
       - name: Executar Migração do Banco Oracle
         uses: diliver/action-sqlplus@v1  # <-- Usando a action correta
         with:
           user: ${{ secrets.ORACLE_USER }}
           password: ${{ secrets.ORACLE_PASSWORD }}
           connection_string: ${{ secrets.ORACLE_CONNECT_STRING }}
-          sql: Script_SQL_PPA_v2.sql # O script que criamos
+          sql: SQL_PPA_2.sql # O script que criamos
 
       # --- ETAPAS DE DEPLOY REMOVIDAS ---
       # 4. Deploy para Servidor via SCP  <-- REMOVIDO
