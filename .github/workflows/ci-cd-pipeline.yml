@@ -48,10 +48,10 @@ jobs:
           name: app-jar
           path: target/*.jar 
 
+# ===================================================================
+  # JOB 2: ATUALIZAÇÃO DO BANCO DE DADOS ORACLE (MÉTODO MANUAL)
   # ===================================================================
-  # JOB 2: ATUALIZAÇÃO DO BANCO DE DADOS ORACLE
-  # ===================================================================
-  run-database-migration: # <-- NOME MUDOU (era deploy-and-migrate)
+  run-database-migration:
     name: Atualizar Banco de Dados Oracle
     runs-on: ubuntu-latest
     
@@ -60,15 +60,33 @@ jobs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 
     steps:
-      # 1. Download do código (precisamos do script SQL)
+      # 1. Checkout do código (para pegar o script SQL)
       - name: Checkout do código
         uses: actions/checkout@v4
-        
-      # 2. INTEGRAÇÃO ORACLE: Executa o script SQL (SQL_PPA_2.sql)
-      - name: Executar Migração do Banco Oracle
-        uses: oracle/run-sqlcl@v1
+
+      # 2. Instalar o Java (O SQLcl é uma aplicação Java)
+      - name: Configurar JDK 17
+        uses: actions/setup-java@v4
         with:
-          username: ${{ secrets.ORACLE_USER }}
-          password: ${{ secrets.ORACLE_PASSWORD }}
-          connection_string: ${{ secrets.ORACLE_CONNECT_STRING }}
-          script: SQL_PPA_2.sql # O script que criamos
+          java-version: '17' 
+          distribution: 'temurin'
+          
+      # 3. Baixar e instalar o Oracle SQLcl (cliente de banco)
+      - name: Download e Instalação do SQLcl
+        run: |
+          wget https://download.oracle.com/otn_software/java/sqlcl/sqlcl-latest.zip
+          unzip sqlcl-latest.zip
+          # Adiciona o executável 'sql' ao PATH do runner
+          echo "$(pwd)/sqlcl/bin" >> $GITHUB_PATH
+
+      # 4. Executar a Migração do Banco Oracle
+      - name: Executar Migração do Banco
+        env:
+          # Passa os Secrets para o ambiente do script
+          ORACLE_USER: ${{ secrets.ORACLE_USER }}
+          ORACLE_PASSWORD: ${{ secrets.ORACLE_PASSWORD }}
+          ORACLE_CONNECT_STRING: ${{ secrets.ORACLE_CONNECT_STRING }}
+        run: |
+          # Executa o script SQL. 
+          # O SQLcl pegará os secrets automaticamente.
+          sql ${ORACLE_USER}/${ORACLE_PASSWORD}@${ORACLE_CONNECT_STRING} @SQL_PPA_2.sql
